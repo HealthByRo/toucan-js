@@ -377,6 +377,12 @@ export default class Toucan {
       rv.query_string = url.search;
     } catch (e) {
       // `new URL` failed, let's try to split URL the primitive way
+      this.addBreadcrumb({
+        type: 'error',
+        level: 'error',
+        message: `Could not parse URL: ${e}: ${JSON.stringify(request.url)}`,
+      });
+
       const qi = request.url.indexOf('?');
       if (qi < 0) {
         // no query string
