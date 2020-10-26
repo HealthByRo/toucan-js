@@ -80,13 +80,13 @@ export default class Toucan {
     }
 
     this.user = undefined;
-    this.request = this.toSentryRequest(options.event.request);
     this.breadcrumbs = [];
     this.tags = undefined;
     this.extra = undefined;
     this.fingerprint = undefined;
 
     this.beforeSend = this.beforeSend.bind(this);
+    this.request = this.toSentryRequest(options.event.request);
 
     /**
      * Wrap all class methods in a proxy that:
